@@ -19,7 +19,7 @@ Then you need to configure the bot, use ```config.json``` for this:
 }
 ```
 More in detail:
-1. Create a bot using BotFather and paste the generated token in the corresponding field
+1. Create a bot using BotFather and paste the generated token into the corresponding field
 2. Generate a webhook and paste it in ```config.json```, the easiest way is to use ```ngrok```
 3. Enter cities which you want to monitor as it's shown above
 4. Set ```DEVELOPING_MODE``` to ```true```
@@ -38,8 +38,11 @@ and other things):
 ```python3
 python3 test.py
 ```
-```URL_TEMPLATE``` should be set to ```'http://localhost:8888/{}/{}'``` which is done by default in the last commit.
+```URL_TEMPLATE``` should be set to ```'http://localhost:8888/{}/{}'``` which is done by default in the last commit.```CITIES``` can be set to any string, it doesn't matter in this testing procedure.
+To simulate the posting of new advertisements, you can delete(after the initial parsing) some link from ```flats.json```and wait a bit(set ```delay``` to a smaller number to wait less).
+You should get a notification about the advertisement corresponding to the deleted link, which was perceived by the bot as newly posted.
 
+## Using another source of advertisements
 Rental Helper can be used to monitor any website with rental advertisements(from a technical point of view — any website with any content).
 The only thing you have to change is its parser module(concretely ```get_all_flatlinks``` function), but its implicit input data type and output data type should remain
 the same: it gets a string(name of a city), and returns a list of links of all rental advertisements found regarding this city(it would be a good idea to make the typing implicit using 
